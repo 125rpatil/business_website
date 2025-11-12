@@ -1,4 +1,4 @@
-import { StrictMode } from 'react'
+import {StrictMode} from 'react'
 import { createRoot } from 'react-dom/client'
 import {HashRouter, Outlet, Route, Routes} from "react-router";
 import { useNavigate } from 'react-router';
@@ -6,6 +6,7 @@ import "./webby.css"
 import {useState} from "react";
 
 
+// eslint-disable-next-line react-refresh/only-export-components
 function Home() {
        return (
            <div className="glossy">
@@ -101,8 +102,9 @@ function Home() {
        )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 function Products() {
-    function addToCart(product) {
+    function addToCart(product: string) {
         let arr = [];
         const saved = localStorage.getItem("cart");
         if(saved !== null) {
@@ -159,6 +161,7 @@ function Products() {
     );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 function Cart() {
     function load() {
         let arr = [];
@@ -168,7 +171,7 @@ function Cart() {
         }
         return arr;
     }
-    const [items, setItems] = useState(load());
+    const [items] = useState<string[]>(load());
 
     return (
 
@@ -196,6 +199,7 @@ function Cart() {
     )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 function NavBar() {
     const navigate = useNavigate();
 
