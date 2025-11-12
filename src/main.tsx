@@ -160,7 +160,15 @@ function Products() {
 }
 
 function Cart() {
-    const [items, setItems] = useState(JSON.parse(localStorage.getItem("cart") as string));
+    function load() {
+        let arr = [];
+        const saved = localStorage.getItem("cart");
+        if(saved !== null) {
+            arr = JSON.parse(saved);
+        }
+        return arr;
+    }
+    const [items, setItems] = useState(load());
 
     return (
 
