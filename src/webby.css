@@ -5,11 +5,11 @@
 
 
 :root {
-    --gloss-purple: #6b4cff; /* purple */
-    --gloss-steel: #4682b4; /* steel blue */
-    --gloss-black: #0b0b0b; /* near black */
-    --gloss-red: #c0392b; /* strong red */
-    --gloss-tan: #eedbc2; /* tan */
+    --gloss-purple: #6b4cff;
+    --gloss-steel: #4682b4;
+    --gloss-black: #0b0b0b;
+    --gloss-red: #c0392b;
+    --gloss-tan: #eedbc2;
     --max-width: 1100px;
 }
 
@@ -300,3 +300,75 @@ body {
     flex-direction: column;
     gap: 15px;
 }
+.glossy ul li{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.DeleteButton {
+    background: linear-gradient(145deg, #ef4444, #dc2626);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 14px;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+    text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+}
+
+
+.DeleteButton:hover {
+    background: linear-gradient(145deg, #dc2626, #b91c1c);
+    box-shadow: 0 6px 20px rgba(185, 28, 28, 0.6);
+    transform: translateY(-2px);
+}
+
+.DeleteButton:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(220, 38, 38, 0.4);
+}
+.DeleteAllButton {
+    background: linear-gradient(145deg, #ef4444, #dc2626);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-size: 15px;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+    text-shadow: 0 1px 1px rgba(0,0,0,0.2);
+    display: block;
+    margin: 20px auto;
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+}
+
+.DeleteAllButton:hover {
+    background: linear-gradient(145deg, #dc2626, #b91c1c);
+    box-shadow: 0 6px 20px rgba(185, 28, 28, 0.6);
+}
+
+.DeleteAllButton:active {
+    box-shadow: 0 2px 5px rgba(220, 38, 38, 0.4);
+}
+.carttotal {
+    margin-top: 20px;
+    padding: 12px 20px;
+    font-size: 18px;
+    font-weight: 700;
+    color: #dc2626;
+    text-align: right;
+    border-top: 2px solid #ef4444;
+}
+
+

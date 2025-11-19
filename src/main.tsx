@@ -171,7 +171,46 @@ function Cart() {
         }
         return arr;
     }
-    const [items] = useState<string[]>(load());
+    const [items, setItems] = useState<string[]>(load());
+    function trash(indexToDelete: number)
+    {
+        const newItems = [];
+        for (let i = 0; i < items.length; i++) {
+            if (i !== indexToDelete) {
+                newItems.push(items[i]);
+            }
+        }
+        setItems(newItems);
+        localStorage.setItem("cart", JSON.stringify(newItems));
+    }
+    function deleteAll()
+    {
+        localStorage.clear();
+        setItems([]);
+    }
+    function Totalcost()
+    {
+        let total = 0;
+        const saved = localStorage.getItem("cart");
+        let arr = [];
+        if(saved !== null) {
+            arr = JSON.parse(saved);
+        }
+        for(let i = 0; i < arr.length; i++)
+        {
+            if(arr[i] === "Kpop Demon Hunter-GOLDEN vinyl")
+            {
+                total += 34.99;
+            }
+            else if(arr[i] === "Lightning McQueen Swaggy Radio")
+            {
+                total += 99.99;
+            }
+        }
+
+        return total.toFixed(2);
+
+    }
 
     return (
 
@@ -185,15 +224,37 @@ function Cart() {
                     </div>
                 </div>
             </header>
+            {items.length > 0 ?
+                <>
             <section className="cart-header">
                 <h2>Your Cart</h2>
-                <p>This is what you want:</p>
+               <p> This is what you want:</p>
             </section>
+
             <ul>
                 {items.map((item, index) =>
-                    <li key={index}>{item}</li>
-                )}
-            </ul>
+                    <>
+                        <li key={index}>{item}
+                            <button className="DeleteButton" onClick={() => trash(index)}>Delete</button>
+
+                        </li>
+
+                    </>
+
+                )}</ul>
+                </>: <>
+                    <section className="cart-header">
+                        <h2>Your Cart</h2>
+                        <p>Which Currently seems to be empty (¬`‸´¬)</p>
+                    </section>
+                </>}
+
+
+            <div className="carttotal">
+                Total Price of Cart: ${Totalcost()}
+            </div>
+            <button className="DeleteAllButton" onClick={() => deleteAll()}> Clear Cart</button>
+
 
         </div>
     )
@@ -216,9 +277,9 @@ function NavBar() {
     return (
         <>
             <div className="Navvy">
-                <button className="NavButton" onClick={handleGoToHome}>Go to Home</button>
-    <button className="NavButton" onClick={handleGoToProducts}>Go to Products</button>
-    <button className="NavButton" onClick={handleGoToCart}>Go to Cart</button>
+                <button className="NavButton" onClick={handleGoToHome}>Home</button>
+    <button className="NavButton" onClick={handleGoToProducts}>Products</button>
+    <button className="NavButton" onClick={handleGoToCart}>Cart</button>
 
 </div>
     <div id={"restOfScreen"}>
